@@ -1,0 +1,26 @@
+<h2>Mark Form Touched</h2>
+
+<form [formGroup]="form" (ngSubmit)='onSubmit()'>
+    <fieldset>
+        <label for="email">Email: </label>
+        <input type="email" id="email" formControlName="email" />
+        <br>
+        <p *ngIf="email.touched && email.errors?.required">
+            <small>Email is required</small>
+        </p>
+        <p *ngIf="email.touched && email.errors?.pattern">
+            <small>Email format is invalid</small>
+        </p>
+        <label for="password">First Name: </label>
+        <input type="text" id="first-name" formControlName="firstName">
+        <br>
+        <p *ngIf="firstName.touched && firstName.errors?.required">
+            <small>Fist Name is required</small>
+        </p>
+        <input type="submit" value="Salvar">
+    </fieldset>
+</form>
+
+<ul *ngIf="toasterMsgs.length">
+    <li *ngFor="let msg of toasterMsgs">{{ msg }}</li>
+</ul>
